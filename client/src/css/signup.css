@@ -1,0 +1,64 @@
+.form {
+    color: #236f78;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.7%;
+    border-style: solid;
+    border-radius: 30px;
+    border-color: white;
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 40px white;
+    background-color: #abf5c1;
+    margin-left: 30%; 
+    margin-right: 30%; 
+    padding-bottom: 25px;
+    padding-top: 20px;
+  }
+  
+  .form input {
+    color: #236f78;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 35px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 350px;
+    height: 35px;
+    border: none;
+    outline: none;
+  }
+  
+  .submit-button {
+    color: #177E89;
+    border: none;
+    font-weight: bold;
+    appearance: none;
+    background: white;
+    padding: 12px;
+    border-color: #177E89;
+    border-style: solid;
+    border-radius: 6px;
+    transition: 0.3s linear;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+  }
+
+  .submit-button:hover {
+    background-color: #177E89;
+    color: white;
+    box-shadow: 0px 0px 10px white, 0px 0px 20px white;
+  }
+  
+  input:focus::placeholder {
+    color: transparent;
+  }
+  
+  input::placeholder {
+    color: grey;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transition: color 0.3s ease;
+  }

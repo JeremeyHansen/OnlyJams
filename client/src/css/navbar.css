@@ -4,10 +4,9 @@
   
   body {
     margin: 0;
-    background-color: #fffaf0;
+    /* background-color: #262d54; */
     color: white;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   
   .component-container {
@@ -16,7 +15,7 @@
   }
   
   .nav {
-    background-color: #177E89;
+    background: linear-gradient(to right, #4c658a, #abf5c1);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -26,19 +25,19 @@
     padding-bottom: 5px;
     border-style: solid;
     border-width: 0 0 5px 0;
-    border-color: #FBC4AB;
+    border-color: white;
+    box-shadow: 0 0 10px white, 0 0 20px white;
   }
   
   .only{
-    font-family: cursive;
-    font-weight: bold;
     color: white;
   }
   .site-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
   .jams{
-    color: #FBC4AB;
+    font-weight: bold;
+    color: #abf5c1;
   }
 
   
@@ -52,6 +51,10 @@
   
   .nav li {
     transition: linear 0.5s;
+  }
+
+  .nav ul p{
+    color: #4c658a;
   }
   
   .nav a {
@@ -77,12 +80,15 @@
   }
   
   .logout {
-    color: #177E89;
-    background-color: #FBC4AB;
+    color: white;
+    border: none;
+    background-color: #4c658a;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
     margin-top: 10px;
     margin-bottom: 10px;
+    border-style: solid;
+    border-width: 2.5px;
     border-radius: 5px;
     border-color: white;
     transition: linear 0.3s;
@@ -90,7 +96,7 @@
   
   .logout:hover {
     background-color: white;
-    color: #177E89;
+    color: #3f3e7e;
     box-shadow: 0 0 10px white;
   }
 
@@ -98,7 +104,7 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    margin-top: 5px;
+    margin-top: 7px;
     border-style: solid;
     border-color: white;
     border-width: 2px;

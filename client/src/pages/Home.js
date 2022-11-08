@@ -1,20 +1,13 @@
-import Typewriter from "typewriter-effect";
+import "../css/home.css";
 
 export default function Home() {
   return (
     <>
-    <div className="home-container">
-        <h1 className="home-title">OnlyJams.</h1>
-        <h3>
-        <Typewriter 
-        onInit={(typewriter) => {
-            typewriter
-            .typeString("Welcome to OnlyJams, find some new tunes to groove out to.")
-            .start();
-        }} 
-        />
-        </h3>
-    </div>
+      <div className="home-container">
+        <div className="text-box">
+          <h1 className="home-title">OnlyJams.</h1>
+        </div>
+      </div>
     </>
-  )
+  );
 }

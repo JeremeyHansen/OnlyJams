@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../css/signup.css'
 
 export default function Signup() {
   const [firstName, setFirstName] = useState('')
@@ -84,10 +85,18 @@ export default function Signup() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+                    <input
+            name="birthday"
+            placeholder="Birthday: Month/Day/Year"
+            required=""
+            type="text"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+          />
           <input
             name="phoneNumber"
             required=""
-            placeholder="(123)-456-7890"
+            placeholder="Phone Number: (123)-456-7890"
             type="text"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}

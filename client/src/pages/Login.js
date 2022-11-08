@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import "../css/login.css"
 
 export default function Login({ onLogin }) {
   const [username, setUsername] = useState('')
@@ -23,13 +24,13 @@ export default function Login({ onLogin }) {
         }
       })
       .then(() => {
-        navigate('/')
+        navigate('/userhome')
       })
   }
   return (
     <>
       <div className="form-container">
-        <form className="form" onSubmit={onSubmit}>
+        <form className="login-form" onSubmit={onSubmit}>
           <h1>Log In</h1>
           <input
             name="username"

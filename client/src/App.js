@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom"
 import Navbar from "./Navbar"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
+import Userhome from "./pages/Userhome"
 
 
 function App() {
@@ -38,6 +39,7 @@ function handleLogout(user) {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login onLogin={handleLogin} />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/userhome" element={<Userhome />} />
     </Routes>
     </div>
     </>
