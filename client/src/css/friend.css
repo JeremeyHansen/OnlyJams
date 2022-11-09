@@ -1,0 +1,25 @@
+
+.friend-card{
+    display: flex;
+    justify-content: left;
+    margin-left: 55px;
+    align-items: center;
+}
+.friend-pic{
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+}
+.friend-name{
+    color: white;
+    transition: linear 0.3s; 
+
+}
+.friend-name:hover{
+    color: #abf5c1;
+    font-size: larger;
+}

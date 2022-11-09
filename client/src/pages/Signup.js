@@ -1,23 +1,23 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import '../css/signup.css'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../css/signup.css";
 
 export default function Signup() {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [profilePicture, setProfilePicture] = useState('')
-  const [birthday, setBirthday] = useState('')
-  const [pronouns, setPronouns] = useState('')
-  const navigate = useNavigate()
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [pronouns, setPronouns] = useState("");
+  const navigate = useNavigate();
 
   //create a new user
 
   function onSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     const user = {
       first_name: firstName,
       last_name: lastName,
@@ -28,16 +28,16 @@ export default function Signup() {
       phone_number: phoneNumber,
       birthday,
       pronouns,
-    }
+    };
     fetch(`/users`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
       .then(() => {
-        navigate('/login')
-      })
+        navigate("/login");
+      });
   }
 
   return (
@@ -85,7 +85,7 @@ export default function Signup() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-                    <input
+          <input
             name="birthday"
             placeholder="Birthday: Month/Day/Year"
             required=""
@@ -117,11 +117,13 @@ export default function Signup() {
             value={profilePicture}
             onChange={(e) => setProfilePicture(e.target.value)}
           />
-          <button className="submit-button" type="submit">
-            Sign Up
-          </button>
+          <div>
+            <button className="submit-button" type="submit">
+              Sign Up
+            </button>
+          </div>
         </form>
       </div>
     </>
-  )
+  );
 }

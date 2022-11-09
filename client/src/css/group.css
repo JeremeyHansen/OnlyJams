@@ -1,0 +1,25 @@
+
+.group-card{
+    display: flex;
+    justify-content: left;
+    margin-left: 55px;
+    align-items: center;
+}
+.group-pic{
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+}
+.group-name{
+    color: white;
+    transition: linear 0.3s; 
+}
+
+.group-name:hover{
+    color: #abf5c1;
+    font-size: larger;
+}

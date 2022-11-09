@@ -22,7 +22,6 @@ function App() {
   });
 }, []);
 
-
 function handleLogin(user) {
   setUser(user);
 }
@@ -39,7 +38,7 @@ function handleLogout(user) {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login onLogin={handleLogin} />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/userhome" element={<Userhome />} />
+      <Route path="/userhome" element={<Userhome user={user}/>} />
     </Routes>
     </div>
     </>
