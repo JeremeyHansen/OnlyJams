@@ -20,6 +20,15 @@ class UsersController < ApplicationController
         render json: {}, status: 200
     end
 
+    def update
+        user = User.find(session[:user_id])
+        if user 
+            user.update(user_params)
+            render json: user, status: 200
+        end
+
+    end
+
     private 
 
     def user_params

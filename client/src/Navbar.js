@@ -1,31 +1,63 @@
-import { Link, useMatch, useResolvedPath } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { HiMenu } from "react-icons/hi";
+import { useState } from "react";
 
 export default function Navbar({ user, onLogout }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-
+  //log user out
   function handleLogout() {
-    fetch('/logout', {
-      method: 'DELETE',
-    }).then(() => onLogout())
-    .then(() => {
-      navigate("/")
+    fetch("/logout", {
+      method: "DELETE",
     })
+      .then(() => onLogout())
+      .then(() => {
+        navigate("/");
+      }).then(setOpen(!open));
   }
-  console.log(user)
+
+  //set the drop down menu to open
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
 
   return (
     <nav className="nav">
       <Link to="/" className="site-title">
-        <span className="only">Only</span><span className="jams">Jams.</span>
+        <span className="only">Only</span>
+        <span className="jams">Jams.</span>
       </Link>
+      {user && (
+        <ul>
+          <input
+            className="friend-searcher"
+            placeholder="Find New Friends?"
+          ></input>
+        </ul>
+      )}
       <ul>
         {user ? (
           <>
-            <img className="nav-profile-pic" src={user.profile_picture} alt={user.first_name}/>
-            <p>{user.first_name} {user.last_name}</p>
-            <button className="logout" onClick={handleLogout}>Log Out</button>
+            <img
+              className="nav-profile-pic"
+              src={user.profile_picture}
+              alt={user.first_name}
+            />
+            <p>
+              {user.first_name} {user.last_name}
+            </p>
+            <HiMenu className="dropdown" onClick={handleOpen} />
+            {open ? (
+                <div className="menu">
+                  <h4>View Profile</h4>
+                  <button className="logout" onClick={handleLogout}>
+                    Log Out
+                  </button>
+                </div>
+            ) : null}
           </>
         ) : (
           <>
@@ -35,17 +67,17 @@ export default function Navbar({ user, onLogout }) {
         )}
       </ul>
     </nav>
-  )
+  );
 }
 
 function CustomLink({ to, children, ...props }) {
-  const resolvedPath = useResolvedPath(to)
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true })
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
   return (
-    <li className={isActive ? 'active' : ''}>
+    <li className={isActive ? "active" : ""}>
       <Link to={to} {...props}>
         {children}
       </Link>
     </li>
-  )
+  );
 }

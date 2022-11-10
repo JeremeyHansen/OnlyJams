@@ -1,6 +1,4 @@
 class SubscriptionsController < ApplicationController
-
-
     def create 
         subscription = Subscription.create!(subscription_params)
         render json: subscription, status: :created
@@ -21,4 +19,5 @@ class SubscriptionsController < ApplicationController
     def subscription_params
         params.permit(:group_id, :user_id)
     end
+    
 end

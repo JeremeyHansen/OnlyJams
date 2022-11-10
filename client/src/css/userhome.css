@@ -4,8 +4,12 @@
   background: rgb(209, 240, 255);
   margin-left: 25%;
   margin-right: 25%;
-  height: 100vh;
+  height: 96.5vh;
   border-radius: 15px;
+  overflow: scroll;
+  border-style: solid;
+  border-width: 5px;
+  box-shadow: 0 0 10px white, 0 0 20px white;
 }
 
 .form-container {
@@ -16,7 +20,6 @@
 
 .post-img {
   margin-right: 25px;
-  margin-top: 47px;
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -45,25 +48,55 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 19%;
+  top: 18.7%;
   background: rgba(209, 237, 231, 0.795);
-  border-radius: 10px;
-  margin-left: 20px;
-  height: 100vh;
+  /* border-radius: 10px; */
+  margin-left: 35px;
+  height: 85vh;
   width: 20%;
+  overflow: scroll;
+  border-style: solid;
+  border-width: 5px;
 }
 
 .group-container {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 19%;
+  top: 18.4%;
   background: rgba(209, 237, 231, 0.795);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   margin-left: 76.5%;
   height: 100vh;
   width: 20%;
+  overflow: scroll;
+  border-style: solid;
+  border-width: 5px;
 }
 .side-title{
   text-decoration: underline;
+}
+
+.friend-list{
+  margin-top: 20px;
+}
+.post-list{
+  margin-top: 45px;
+}
+
+.all-groups{
+  margin-top: 20px;
+}
+
+.submit-btn{
+  border-style: none;
+  border-radius: 6px;
+  background-color: rgba(209, 237, 231, 0.795);
+  color: rgb(56, 65, 134);
+  padding: 10px;
+  margin-top: 10px;
+  border-color: white;
+  border-style: solid;
+  border-width: 3px;
+  font-family: inherit;
 }

@@ -1,0 +1,68 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .88);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: black;
+}
+
+.popup-inner {
+    color: black;
+    border-style: solid;
+    border-color: white;
+    box-shadow: 0 0 10px rgb(89, 114, 168), 0 0 20px rgb(53, 112, 132);
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 540px;
+    height: 500px;
+    background: linear-gradient(to right, #4c658a, #abf5c1);
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    color: linear-gradient(to right, #4c658a, #abf5c1);
+    font-family: inherit;
+    font-weight: bold;
+    background-color: white;
+    border-style: none;
+    border-style: solid;
+    border-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    top: 16px;
+    right: 16px;
+    width: 60px;
+    transition: linear 0.3s; 
+
+}
+
+.close-btn:hover{
+    color: rgb(104, 104, 186);
+    background-color: #abf5c1;
+    cursor: pointer;
+}
+
+.popup-img{
+    width: 150px;
+    border-radius: 10px;
+}
+
+.popup-span{
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+    padding-right: 15px;
+}
+
+.popup-pronouns{
+    font-weight: lighter;
+    font-size: 1.2rem;
+}

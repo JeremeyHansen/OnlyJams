@@ -1,25 +1,78 @@
+.group-card {
+  display: flex;
+  justify-content: left;
+  margin-left: 55px;
+  align-items: center;
+}
+.group-pic {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+}
+.group-name {
+  color: white;
+  transition: linear 0.3s;
+}
 
-.group-card{
-    display: flex;
-    justify-content: left;
-    margin-left: 55px;
-    align-items: center;
-}
-.group-pic{
-    margin-right: 10px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border-style: solid;
-    border-width: 2px;
-    border-color: white;
-}
-.group-name{
-    color: white;
-    transition: linear 0.3s; 
+.group-name:hover {
+  color: #abf5c1;
+  font-size: larger;
+  cursor: pointer;
 }
 
-.group-name:hover{
-    color: #abf5c1;
-    font-size: larger;
+.group-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 25%;
+  width: 50%;
+  height: 87vh;
+  margin-top: 120px;
+  background-color: rgb(209, 240, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  overflow: scroll;
+  border-style: solid;
+  border-width: 10px;
+  border-color: white;
+  color: black;
+}
+
+.group-popup-inner {
+  color: White;
+  box-shadow: 0 0 10px rgb(89, 114, 168), 0 0 20px rgb(53, 112, 132);
+  position: relative;
+  padding: 32px;
+  width: 100%;
+  height: 100%;
+}
+
+.group-close-btn {
+  position: absolute;
+  color: linear-gradient(to right, #4c658a, #abf5c1);
+  font-family: inherit;
+  font-weight: bold;
+  background-color: white;
+  border-style: none;
+  border-style: solid;
+  border-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  top: 16px;
+  right: 16px;
+  width: 120px;
+  transition: linear 0.3s; 
+
+}
+
+.group-close-btn:hover{
+  color: rgb(104, 104, 186);
+  background-color: #abf5c1;
+  cursor: pointer;
 }

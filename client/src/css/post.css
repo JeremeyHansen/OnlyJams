@@ -1,0 +1,36 @@
+.post-card {
+  border-style: solid;
+  background: rgb(223, 244, 255);
+  border-radius: 15px;
+  margin: 20px;
+  color: #3f3e7e;
+}
+
+.user-post {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.post-pic {
+  width: 35px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: white;
+  border-width: 2px;
+  margin-right: 10px;
+  margin-left: 15px;
+}
+
+.btn-container button {
+  margin-left: 15px;
+  border-style: none;
+  border-style: solid;
+  border-color: white;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: rgb(148, 198, 205);
+  color: white;
+}
