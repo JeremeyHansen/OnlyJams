@@ -2,6 +2,7 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import { useState } from "react";
+import UserProfile from './pages/UserProfile.js'
 
 export default function Navbar({ user, onLogout }) {
   const navigate = useNavigate();
@@ -24,6 +25,17 @@ export default function Navbar({ user, onLogout }) {
     setOpen(!open);
   };
 
+  const [ openProfile, setOpenProfile ] = useState(false);
+
+  const handleOpenProfile = () => {
+    setOpenProfile(true)
+  };
+
+  const handleUserClose = () => {
+    setOpenProfile(false);
+  };
+
+
   return (
     <nav className="nav">
       <Link to="/" className="site-title">
@@ -35,7 +47,7 @@ export default function Navbar({ user, onLogout }) {
           <input
             className="friend-searcher"
             placeholder="Find New Friends?"
-          ></input>
+            ></input>
         </ul>
       )}
       <ul>
@@ -45,17 +57,20 @@ export default function Navbar({ user, onLogout }) {
               className="nav-profile-pic"
               src={user.profile_picture}
               alt={user.first_name}
-            />
+              />
             <p>
               {user.first_name} {user.last_name}
             </p>
             <HiMenu className="dropdown" onClick={handleOpen} />
             {open ? (
-                <div className="menu">
-                  <h4>View Profile</h4>
+              <div className="menu">
+                  <div className="dropdown-container">
+                  <button className="profile-btn" onClick={handleOpenProfile}>Profile</button>
+                  {openProfile&&(<UserProfile  handleUserClose={handleUserClose} user={user}/>)}
                   <button className="logout" onClick={handleLogout}>
                     Log Out
                   </button>
+                  </div>
                 </div>
             ) : null}
           </>

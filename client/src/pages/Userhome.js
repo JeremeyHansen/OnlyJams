@@ -6,12 +6,11 @@ import Post from "./Post.js";
 
 export default function Userhome({ user }) {
   const [post, setPost] = useState("");
-  const [allPosts, setAllPosts] = useState([user?.posts]);
-  const [userFriends, setUserFriends] = useState([]);
+  const [allPosts, setAllPosts] = useState(user?.posts);
   const [groups, setGroups] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [friendSearchTerm, setFriendSearchTerm] = useState("");
-  
+
   //fetch all the groups/genres
   
   useEffect(() => {
@@ -69,7 +68,7 @@ export default function Userhome({ user }) {
     }, 2000)
     return () => clearTimeout(timer)
   }, [buttonText])
-  
+
   
   return (
     <>
@@ -83,14 +82,14 @@ export default function Userhome({ user }) {
             onChange={handleChange}
           ></input>
           <div className="all-groups">
-            {groupsToDisplay.map((group) => {
-              return <Group key={group.id} group={group} />;
+            {groupsToDisplay.sort((a, b) => a.name.localeCompare(b.name)).map((group) => {
+              return <Group key={group.id} user={user} group={group} />;
             })}
           </div>
         </div>
         <div className="posts-container">
           <div className="form-container">
-            <img className="post-img" src={user?.profile_picture}></img>
+            <img className="post-img" alt={user?.first_name} src={user?.profile_picture}></img>
             <form onSubmit={handleSubmit}>
               <input
                 className="post-input"
@@ -124,7 +123,7 @@ export default function Userhome({ user }) {
 
           ></input>
           <div className="friend-list">
-            {friendsToDisplay?.map((friend) => {
+            {friendsToDisplay?.sort((a, b) => a.first_name.localeCompare(b.first_name)).map((friend) => {
               return <Friend key={friend.id} friend={friend} />;
             })}
           </div>

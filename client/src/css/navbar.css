@@ -104,6 +104,30 @@ body {
   background-color: white;
   color: #3f3e7e;
   box-shadow: 0 0 10px white;
+  cursor: pointer;
+}
+
+.profile-btn{
+      color: white;
+    border: none;
+    width: 175px; 
+    background-color: #4c658a;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-width: 2.5px;
+    border-radius: 5px;
+    border-color: white;
+    transition: linear 0.3s;
+}
+
+.profile-btn:hover {
+  background-color: white;
+  color: #3f3e7e;
+  box-shadow: 0 0 10px white;
+  cursor: pointer;
 }
 
 .nav-profile-pic {
@@ -147,6 +171,20 @@ body {
   border: 4px solid white;
   border-radius: 5px;
   width: 250px;
-  background: linear-gradient(to left, #01327b, #659172);
+  background: rgb(148, 198, 205);
   box-shadow: 0 0 10px white, 0 0 20px white;
+}
+.dropdown-container{
+  margin-left: 20px;
+  border-color: white;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.user-container{
+  background: black;
+  height: 100vh;
 }

@@ -13,6 +13,10 @@ class PostsController < ApplicationController
     def index
         render json: Post.all, status: 200
     end
+    def show
+        post = Post.find(session[:user_id])
+        render json: post, status: 200
+    end
 
     def update
         post = Post.find(params[:id])
