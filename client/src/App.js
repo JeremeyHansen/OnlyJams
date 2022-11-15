@@ -9,6 +9,9 @@ import Userhome from "./pages/Userhome"
 
 function App() {
   const [ user, setUser ] = useState(null);
+  const [ userFriends, setUserFriends ] = useState([])
+
+
   
   useEffect(() => {
     fetch("/me")
@@ -16,10 +19,21 @@ function App() {
       if (res.ok) {
         res.json()
         .then((user) => {
-          setUser(user);
-        });
+          setUser(user)})
       }
   });
+}, []);
+
+useEffect(() => {
+  fetch(`/users/2/friends`)
+  .then((res) => {
+    if (res.ok) {
+      res.json()
+      .then((data) => {
+        setUserFriends(data);
+      });
+    }
+});
 }, []);
 
 function handleLogin(user) {

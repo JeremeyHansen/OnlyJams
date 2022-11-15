@@ -28,6 +28,11 @@ class UsersController < ApplicationController
         end
     end
 
+    def showFriends
+        user = User.find(params[:id]).friends 
+        render json: user, status: 200
+    end
+
     private 
 
     def user_params

@@ -19,7 +19,7 @@ export default function EditUserProfile({
   function handleSubmit(e) {
     e.preventDefault();
     const fixedUser = {
-      id: ogUser.id,
+      user_id: ogUser.id,
       first_name: firstName,
       last_name: lastName,
       phone_number: phoneNumber,

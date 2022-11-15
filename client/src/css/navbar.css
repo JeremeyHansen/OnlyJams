@@ -173,6 +173,7 @@ body {
   width: 250px;
   background: rgb(148, 198, 205);
   box-shadow: 0 0 10px white, 0 0 20px white;
+  z-index: 2;
 }
 .dropdown-container{
   margin-left: 20px;
@@ -187,4 +188,59 @@ body {
 .user-container{
   background: black;
   height: 100vh;
+}
+
+.all-users-list{
+  position: absolute;
+  top: 0;
+  background: rgb(148, 198, 205);
+  padding: 20px;
+  border-style: solid;
+  height: 200px;
+  border-radius: 5px;
+  border-width: 3px;
+  margin-top: 3%;
+  overflow: hidden;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+}
+
+.all-users-list img{
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+}
+
+.all-users-list button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-style: none;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: white;
+  border-width: 2px;
+  margin-top: 5px;
+  margin-right: 5px;
+  background: rgb(148, 198, 205);
+  font-weight: bold;
+  color: white;
+}
+
+.all-users-list button:hover{
+  color: #177e89;
+  background: white;
+  border-color: #177e89;
+}
+
+.all-users-list li {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.home{
+  margin-top: 7px;
 }

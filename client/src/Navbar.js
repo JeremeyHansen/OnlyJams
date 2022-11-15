@@ -1,41 +1,73 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
-import { useState } from "react";
-import UserProfile from './pages/UserProfile.js'
+import { useState, useEffect } from "react";
+import UserProfile from "./pages/UserProfile.js";
+import User from './pages/User.js'
+import { BsFillHouseDoorFill } from "react-icons/bs";
+
+
 
 export default function Navbar({ user, onLogout }) {
-  const navigate = useNavigate();
+  const [allUsers, setAllUsers] = useState([]);
+  const [userSearchTerm, setUserSearchTerm] = useState("");
+  const [userSearchOpen, setUserSearchOpen] = useState(false);
 
+  const navigate = useNavigate();
+  //snag all users
+  useEffect(() => {
+    // auto-login
+    fetch("/users")
+    .then((res) => res.json())
+    .then((data) => setAllUsers(data));
+  }, []);
+  
+  //search users
+  const usersToDisplay = allUsers?.filter((user) =>
+  (user.first_name + user.last_name)
+  .toLowerCase()
+  .includes(userSearchTerm.toLowerCase())
+  );
+  function handleUserSearch(event) {
+    setUserSearchTerm(event.target.value);
+  }
+  
+  const handleOpenUserSearch = () => {
+    setUserSearchOpen(true)
+  }
+  const handleCloseUserSearch = () => {
+    setUserSearchOpen(false)
+  }
+  
   //log user out
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE",
     })
-      .then(() => onLogout())
-      .then(() => {
-        navigate("/");
-      }).then(setOpen(!open));
+    .then(() => onLogout())
+    .then(() => {
+      navigate("/");
+    })
+    .then(setOpen(!open));
   }
-
+  
   //set the drop down menu to open
   const [open, setOpen] = useState(false);
-
+  
   const handleOpen = () => {
     setOpen(!open);
   };
-
-  const [ openProfile, setOpenProfile ] = useState(false);
-
+  
+  const [openProfile, setOpenProfile] = useState(false);
+  
   const handleOpenProfile = () => {
-    setOpenProfile(true)
+    setOpenProfile(true);
   };
-
+  
   const handleUserClose = () => {
     setOpenProfile(false);
   };
-
-
+  
   return (
     <nav className="nav">
       <Link to="/" className="site-title">
@@ -44,10 +76,22 @@ export default function Navbar({ user, onLogout }) {
       </Link>
       {user && (
         <ul>
+          <Link to="/userhome">          
+          <BsFillHouseDoorFill className="home"/>
+          </Link>
           <input
             className="friend-searcher"
             placeholder="Find New Friends?"
-            ></input>
+            value={userSearchTerm}
+            onChange={handleUserSearch}
+            onClick={handleOpenUserSearch}
+          ></input>
+          {userSearchOpen&&<div className="all-users-list">
+          {userSearchOpen&& usersToDisplay.map((singleUser) => {
+              return <User key={singleUser.id} singleUser={singleUser}/>
+            })}
+           {userSearchOpen&&<button onClick={handleCloseUserSearch}>X</button>} 
+          </div>}
         </ul>
       )}
       <ul>
@@ -57,21 +101,28 @@ export default function Navbar({ user, onLogout }) {
               className="nav-profile-pic"
               src={user.profile_picture}
               alt={user.first_name}
-              />
+            />
             <p>
               {user.first_name} {user.last_name}
             </p>
             <HiMenu className="dropdown" onClick={handleOpen} />
             {open ? (
               <div className="menu">
-                  <div className="dropdown-container">
-                  <button className="profile-btn" onClick={handleOpenProfile}>Profile</button>
-                  {openProfile&&(<UserProfile  handleUserClose={handleUserClose} user={user}/>)}
+                <div className="dropdown-container">
+                  <button className="profile-btn" onClick={handleOpenProfile}>
+                    Profile
+                  </button>
+                  {openProfile && (
+                    <UserProfile
+                      handleUserClose={handleUserClose}
+                      user={user}
+                    />
+                  )}
                   <button className="logout" onClick={handleLogout}>
                     Log Out
                   </button>
-                  </div>
                 </div>
+              </div>
             ) : null}
           </>
         ) : (

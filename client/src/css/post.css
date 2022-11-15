@@ -13,12 +13,27 @@
 }
 .post-pic {
   width: 35px;
+  height:35px;
   border-radius: 50%;
   border-style: solid;
   border-color: white;
   border-width: 2px;
   margin-right: 10px;
   margin-left: 15px;
+}
+
+.btn-container{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-container p{
+  margin-left: 13px;
+}
+
+.liked-btn{
+  color: #3f3e7e;
+  border-color: #3f3e7e;
 }
 
 .btn-container button {
@@ -34,4 +49,32 @@
   background: rgb(148, 198, 205);
   color: white;
   margin-bottom: 15px;
+}
+.like-btns:hover{
+  background-color: white;
+  color: #3f3e7e;
+}
+
+
+.like-container{
+  position: absolute;
+  margin-left: 78%;
+  display: flex;
+}
+
+.like-container p{
+  padding-left: 10px;
+}
+.home-like-container{
+  display: flex;
+  right: 28%;
+  position: absolute;
+}
+
+.home-like-container p{
+  padding-left: 10px;
+}
+
+.like-count{
+  margin-left: 70%;
 }

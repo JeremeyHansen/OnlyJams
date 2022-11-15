@@ -1,33 +1,53 @@
-import { BiComment } from 'react-icons/bi'
 import { FiSave } from 'react-icons/fi'
 import { FaThumbsUp } from 'react-icons/fa'
-// import {useState, useEffect} from 'react'
+import { useState } from 'react'
 import '../css/post.css'
 
-export default function Post({ post, user }) {
+export default function Post({ post, friend }) {
 
-//   console.log(post)
+  const [ postLikes, setPostLikes ] = useState(post.likes)
+  const [buttonClassName, setButtonClassName] = useState("like-btns")
+
+  function handleLike(e){
+    e.preventDefault()
+    const fixedLikes = post.likes + 1
+    const fixedPost = {
+      post_id: post.id,
+      post: post,
+      saves: post.saves,
+      likes: fixedLikes,
+      created_at: post.created_at,
+      group: post.group,
+      user: post.user
+    }
+    fetch(`/posts/${post.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(fixedPost),
+    })
+      setPostLikes(fixedLikes)
+      setButtonClassName("liked-btn")
+    }
+
   return (
     <>
       <div className="post-card">
         <div className="user-post">
-          <img className="post-pic"src={user?.profile_picture}></img> 
-          <h3>{user?.first_name}</h3>
+          <img alt={friend?.first_name} className="post-pic"src={friend?.profile_picture}></img> 
+          <h3>{friend?.first_name} {friend?.last_name}</h3>
+        <p className="like-count">Likes: {postLikes}</p>
         </div>
         <h4>{post?.post} </h4>
         {/* <h5>{post?.likes}</h5> */}
         <div className="btn-container">
-          <button>
-            <FaThumbsUp />
+          <button className="like-btns" onClick={handleLike}>
+            <FaThumbsUp className={buttonClassName}/>
           </button>
-          <button>
-            <BiComment />
-          </button>
-          <button>
-            <FiSave />
+          <button className="like-btns">
+            <FiSave className="like-btns"/>
           </button>
         </div>
-        <h5></h5>
+        {/* <h5></h5> */}
       </div>
     </>
   )

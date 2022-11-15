@@ -6,7 +6,7 @@ import Post from "./Post.js";
 
 export default function Userhome({ user }) {
   const [post, setPost] = useState("");
-  const [allPosts, setAllPosts] = useState(user?.posts);
+  // const [allPosts, setAllPosts] = useState(user?.posts);
   const [groups, setGroups] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [friendSearchTerm, setFriendSearchTerm] = useState("");
@@ -108,9 +108,10 @@ export default function Userhome({ user }) {
             </form>
           </div>
           <div className="post-list">
-            {user?.posts.map((post) => {
-              return <Post key={post.id} post={post} user={user}/>;
-            })}
+            {user?.friends.map((friend) => 
+            friend.posts.map((post) => {
+              return <Post key={post.id} post={post} friend={friend}/>;
+            }))}
           </div>
         </div>
         <div className="friend-container">
@@ -120,7 +121,6 @@ export default function Userhome({ user }) {
             placeholder="Search..."
             value={friendSearchTerm}
             onChange={handleFriendSearch}
-
           ></input>
           <div className="friend-list">
             {friendsToDisplay?.sort((a, b) => a.first_name.localeCompare(b.first_name)).map((friend) => {
