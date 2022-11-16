@@ -50,5 +50,7 @@ $ rails s
 $ npm start --prefix client
 ```
 
+Then simply create a profile and login and you're all set!
+
 Enjoy!
 
