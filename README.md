@@ -43,10 +43,12 @@ As a musician, I've realized the social media realm lacks a platform for users t
 To set up this project, begin by cloning the repository to a place of your choosing. Then run the following commands...
 
 ```
-$ cd ../onlyjams
+$ cd onlyjams
 $ bundle
 $ rails db:seed
 $ rails s
 $ npm start --prefix client
 ```
+
+Enjoy!
 
