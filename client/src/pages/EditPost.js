@@ -24,14 +24,14 @@ export default function EditPost({post, setHandleOpen, closeEditPost, setPostTex
       return (
         <div className="popup">
           <div className="popup-inner">
-            <button className="edit-submit-button" onClick={closeEditPost}>Return Home</button>
+            <button className="edit-submit-button" onClick={closeEditPost}>Return To {post?.group.name}</button>
             <h2>Edit Post</h2>
             <form className="form" onSubmit={handleEdit}>
             <input
               name="name"
               required=""
               type="text"
-              defaultValue={post.post}
+              defaultValue={updatedPost}
               onChange={(e) => setUpdatedPost(e.target.value)}
             />
             <button className="submit-button" type="submit">

@@ -27,7 +27,6 @@ export default function Userhome({ user, newFriend }) {
   function handleChange(event) {
     setSearchTerm(event.target.value);
   }
-  console.log(newFriend)
   const allFriends = user ? user.friends : [];
   newFriend&&(allFriends.push(newFriend))
 

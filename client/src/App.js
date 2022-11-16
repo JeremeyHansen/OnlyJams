@@ -52,7 +52,7 @@ function App() {
       <Route path="/login" element={<Login onLogin={handleLogin} />} />
       <Route path="/signup" element={<Signup allUsers={allUsers} setAllUsers={setAllUsers}/>} />
       <Route path="/userhome" element={<Userhome user={user} newFriend={newFriend}/>} />
-      <Route path="/messages" element={<Messages user={user}/>} />
+      <Route path="/messages" element={<Messages user={user} allUsers={allUsers}/>} />
       <Route path="/savedpostspage" element={<SavedPostsPage user={user} />} />
     </Routes>
     </div>
