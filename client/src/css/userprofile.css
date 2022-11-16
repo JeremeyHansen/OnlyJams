@@ -4,7 +4,7 @@
     left: 0;
     margin-left: 25%;
     width: 50%;
-    height: 100vh;
+    height: 86.5vh;
     margin-top: 115px;
     background-color: rgb(209, 240, 255);
     display: flex;
@@ -38,4 +38,41 @@
 
 .user-text{
     color: black;
+    text-decoration: underline;
+}
+
+.user-contents{
+    border-style: solid;
+    border-radius: 10px;
+    border-color: white;
+    border-width: 5px;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: rgb(177, 207, 238);
+    margin-top: 25px;
+}
+
+.user-contents h3{
+ margin-left: 33%;
+}
+
+.edit-profile-btn{
+    font-family: inherit;
+    font-weight: bold;
+    background-color: white;
+    border-style: none;
+    border-style: solid;
+    border-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 120px;
+    margin-left: 40%;
+    margin-bottom: 20px;
+    transition: linear 0.3s;
+}
+
+.edit-profile-btn:hover{
+    color: rgb(104, 104, 186);
+    background-color: #abf5c1;
+    cursor: pointer;
 }

@@ -12,7 +12,7 @@ export default function Post({ post, friend }) {
     e.preventDefault()
     const fixedLikes = post.likes + 1
     const fixedPost = {
-      post_id: post.id,
+      id: post.id,
       post: post,
       saves: post.saves,
       likes: fixedLikes,

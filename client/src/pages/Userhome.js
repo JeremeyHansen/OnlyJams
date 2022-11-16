@@ -12,64 +12,64 @@ export default function Userhome({ user }) {
   const [friendSearchTerm, setFriendSearchTerm] = useState("");
 
   //fetch all the groups/genres
-  
+
   useEffect(() => {
     fetch("/groups")
-    .then((res) => res.json())
-    .then((data) => setGroups(data));
+      .then((res) => res.json())
+      .then((data) => setGroups(data));
   }, []);
-  
+
   //genre search bar function
-  
+
   const groupsToDisplay = groups.filter((group) =>
-  group.name.toLowerCase().includes(searchTerm.toLowerCase())
+    group.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  
+
   function handleChange(event) {
     setSearchTerm(event.target.value);
   }
-  
+
   //search for the friends
-  
+
   const friendsToDisplay = user?.friends.filter((friend) =>
-  (friend.first_name + friend.last_name)
-  .toLowerCase()
-  .includes(friendSearchTerm.toLowerCase())
+    (friend.first_name + friend.last_name)
+      .toLowerCase()
+      .includes(friendSearchTerm.toLowerCase())
   );
+  
   function handleFriendSearch(event) {
     setFriendSearchTerm(event.target.value);
   }
-  
+
   //send a new post
   function handleSubmit(e) {
     e.preventDefault();
     const newPost = {
-      post: post, 
+      post: post,
       user_id: user?.id,
-      group_id: 2
+      group_id: 2,
     };
     fetch(`/posts`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPost),
     })
-    .then((res) => res.json())
-    .then(setPost(""))
+      .then((res) => res.json())
+      .then(setPost(""));
     // .then(setAllPosts(...allPosts, newPost))
   }
-  
-  //changes button text on submit 
-  const text = 'Send Post'
-  const [ buttonText, setButtonText ] = useState(text);
+
+  //changes button text on submit
+  const text = "Send Post";
+  const [buttonText, setButtonText] = useState(text);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setButtonText(text)
-    }, 2000)
-    return () => clearTimeout(timer)
-  }, [buttonText])
+      setButtonText(text);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [buttonText]);
 
-  
   return (
     <>
       <div className="userhome-container">
@@ -82,14 +82,20 @@ export default function Userhome({ user }) {
             onChange={handleChange}
           ></input>
           <div className="all-groups">
-            {groupsToDisplay.sort((a, b) => a.name.localeCompare(b.name)).map((group) => {
-              return <Group key={group.id} user={user} group={group} />;
-            })}
+            {groupsToDisplay
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((group) => {
+                return <Group key={group.id} user={user} group={group} />;
+              })}
           </div>
         </div>
         <div className="posts-container">
           <div className="form-container">
-            <img className="post-img" alt={user?.first_name} src={user?.profile_picture}></img>
+            <img
+              className="post-img"
+              alt={user?.first_name}
+              src={user?.profile_picture}
+            ></img>
             <form onSubmit={handleSubmit}>
               <input
                 className="post-input"
@@ -103,15 +109,21 @@ export default function Userhome({ user }) {
                 value={post}
                 onChange={(e) => setPost(e.target.value)}
               />
-              <button className="submit-btn" onClick={() => setButtonText("Sent!")}>{buttonText}</button>
+              <button
+                className="submit-btn"
+                onClick={() => setButtonText("Sent!")}
+              >
+                {buttonText}
+              </button>
               {/* <dropdown>Dropdown</dropdown> */}
             </form>
           </div>
           <div className="post-list">
-            {user?.friends.map((friend) => 
-            friend.posts.map((post) => {
-              return <Post key={post.id} post={post} friend={friend}/>;
-            }))}
+            {user?.friends.map((friend) =>
+              friend.posts.map((post) => {
+                return <Post key={post.id} post={post} friend={friend} />;
+              })
+            )}
           </div>
         </div>
         <div className="friend-container">
@@ -123,9 +135,11 @@ export default function Userhome({ user }) {
             onChange={handleFriendSearch}
           ></input>
           <div className="friend-list">
-            {friendsToDisplay?.sort((a, b) => a.first_name.localeCompare(b.first_name)).map((friend) => {
-              return <Friend key={friend.id} friend={friend} />;
-            })}
+            {friendsToDisplay
+              ?.sort((a, b) => a.first_name.localeCompare(b.first_name))
+              .map((friend) => {
+                return <Friend key={friend.id} friend={friend} />;
+              })}
           </div>
         </div>
       </div>

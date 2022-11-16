@@ -127,7 +127,7 @@ Match.create(user_id: 2, friend_id: 18)
 
 
 puts "Seeding Message Data"
-Message.create(message: "Hi, how are you?", friend_id: 2, user_id: 2)
+Message.create(message: "Hi, how are you?", friend_id: 1, user_id: 2)
 Message.create(message: "Hi, how are you?", friend_id: 8, user_id: 2)
 Message.create(message: "Hi, how are you?", friend_id: 7, user_id: 2)
 Message.create(message: "Hi, how are you?", friend_id: 6, user_id: 2)

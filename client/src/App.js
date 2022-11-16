@@ -5,6 +5,8 @@ import Navbar from "./Navbar"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Userhome from "./pages/Userhome"
+import Messages from "./pages/Messages"
+import SavedPostsPage from "./pages/SavedPostsPage"
 
 
 function App() {
@@ -46,13 +48,15 @@ function handleLogout(user) {
 
   return (
     <>
-    <Navbar user={user} onLogout={handleLogout}/>
+    <Navbar user={user} onLogout={handleLogout} setUser={setUser}/>
     <div className="component-container">
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login onLogin={handleLogin} />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/userhome" element={<Userhome user={user}/>} />
+      <Route path="/userhome" element={<Userhome user={user} />} />
+      <Route path="/messages" element={<Messages user={user}/>} />
+      <Route path="/savedpostspage" element={<SavedPostsPage user={user} />} />
     </Routes>
     </div>
     </>

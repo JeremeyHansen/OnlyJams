@@ -2,24 +2,24 @@ import { useState } from "react";
 import '../css/edituser.css'
 
 export default function EditUserProfile({
-  ogUser,
-  setOgUser,
+  user,
+  setUser,
   closeEditProfile,
 }) {
-  const [firstName, setFirstName] = useState(ogUser?.first_name);
-  const [lastName, setLastName] = useState(ogUser?.last_name);
-  const [phoneNumber, setPhoneNumber] = useState(ogUser?.phone_number);
-  const [profilePicture, setProfilePicture] = useState(ogUser?.profile_picture);
-  const [email, setEmail] = useState(ogUser?.email);
-  const [birthday, setBirthday] = useState(ogUser?.birthday);
-  const [username, setUsername] = useState(ogUser?.username);
-  const [pronouns, setPronouns] = useState(ogUser?.pronouns);
-  const [password, setPassword] = useState(ogUser?.password);
+  const [firstName, setFirstName] = useState(user?.first_name);
+  const [lastName, setLastName] = useState(user?.last_name);
+  const [phoneNumber, setPhoneNumber] = useState(user?.phone_number);
+  const [profilePicture, setProfilePicture] = useState(user?.profile_picture);
+  const [email, setEmail] = useState(user?.email);
+  const [birthday, setBirthday] = useState(user?.birthday);
+  const [username, setUsername] = useState(user?.username);
+  const [pronouns, setPronouns] = useState(user?.pronouns);
+  const [password, setPassword] = useState(user?.password);
 
   function handleSubmit(e) {
     e.preventDefault();
     const fixedUser = {
-      user_id: ogUser.id,
+      id: user?.id,
       first_name: firstName,
       last_name: lastName,
       phone_number: phoneNumber,
@@ -29,13 +29,17 @@ export default function EditUserProfile({
       pronouns: pronouns,
       profile_picture: profilePicture,
       password: password,
+      user_id: user?.id,
+      groups: user?.groups,
+      friends: user?.friends,
+      messages: user?.messages
     };
-    fetch(`/users/${ogUser?.id}`, {
+    fetch(`/users/${user?.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(fixedUser),
     })
-      .then(setOgUser(fixedUser))
+      .then(setUser(fixedUser))
       .then(closeEditProfile);
     }
     
@@ -50,56 +54,56 @@ export default function EditUserProfile({
               name="firstName"
               required=""
               type="text"
-              defaultValue={ogUser.first_name}
+              defaultValue={user.first_name}
               onChange={(e) => setFirstName(e.target.value)}
             />
             <input
               name="lastName"
               required=""
               type="text"
-              defaultValue={ogUser.last_name}
+              defaultValue={user.last_name}
               onChange={(e) => setLastName(e.target.value)}
             />
                       <input
               name="profilePicture"
               required=""
               type="text"
-              defaultValue={ogUser.profile_picture}
+              defaultValue={user.profile_picture}
               onChange={(e) => setProfilePicture(e.target.value)}
             />
               <input
                name="username"
                required=""
                type="text"
-               defaultValue={ogUser.username}
+               defaultValue={user.username}
                onChange={(e) => setUsername(e.target.value)}
              />
              <input
               name="pronouns"
               required=""
               type="text"
-              defaultValue={ogUser.pronouns}
+              defaultValue={user.pronouns}
               onChange={(e) => setPronouns(e.target.value)}
             />
              <input
               name="phonenumber"
               required=""
               type="text"
-              defaultValue={ogUser.phone_number}
+              defaultValue={user.phone_number}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
              <input
               name="email"
               required=""
               type="text"
-              defaultValue={ogUser.email}
+              defaultValue={user.email}
               onChange={(e) => setEmail(e.target.value)}
             />
              <input
               name="birthday"
               required=""
               type="text"
-              defaultValue={ogUser.birthday}
+              defaultValue={user.birthday}
               onChange={(e) => setBirthday(e.target.value)}
             />
             <button className="edit-submit-button" type="submit">

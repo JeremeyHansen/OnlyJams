@@ -5,10 +5,11 @@ import { useState, useEffect } from "react";
 import UserProfile from "./pages/UserProfile.js";
 import User from './pages/User.js'
 import { BsFillHouseDoorFill } from "react-icons/bs";
+import { Messages } from './pages/Messages.js';
 
 
 
-export default function Navbar({ user, onLogout }) {
+export default function Navbar({ user, onLogout, setUser }) {
   const [allUsers, setAllUsers] = useState([]);
   const [userSearchTerm, setUserSearchTerm] = useState("");
   const [userSearchOpen, setUserSearchOpen] = useState(false);
@@ -57,11 +58,13 @@ export default function Navbar({ user, onLogout }) {
   const handleOpen = () => {
     setOpen(!open);
   };
+
+  //open user profile
   
   const [openProfile, setOpenProfile] = useState(false);
   
   const handleOpenProfile = () => {
-    setOpenProfile(true);
+    setOpenProfile(true)
   };
   
   const handleUserClose = () => {
@@ -116,8 +119,19 @@ export default function Navbar({ user, onLogout }) {
                     <UserProfile
                       handleUserClose={handleUserClose}
                       user={user}
+                      setUser={setUser}
                     />
                   )}
+                  <Link to="/messages"> 
+                  <button className="profile-btn" onClick={() => setOpen(false)}>
+                    Messages
+                  </button>
+                  </Link>
+                  <Link to="/savedpostspage">
+                  <button className="profile-btn">
+                    Saved Posts
+                  </button>
+                  </Link>
                   <button className="logout" onClick={handleLogout}>
                     Log Out
                   </button>

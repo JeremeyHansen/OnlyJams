@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function EditPost(post, setHandleOpen){
+export default function EditPost(post, setHandleOpen, closeEditPost){
     const [updatedPost, setUpdatedPost] = useState(post.post.post)
     
 
@@ -24,9 +24,13 @@ export default function EditPost(post, setHandleOpen){
       .then(setHandleOpen(false))
       .then(setUpdatedPost(updatedPost))
   }
+
+
+
       return (
         <div className="popup">
           <div className="popup-inner">
+            <button className="submit-button" onClick={closeEditPost}>Return Home</button>
             <h2>Edit Post</h2>
             <form className="form" onSubmit={handleEdit}>
             <input

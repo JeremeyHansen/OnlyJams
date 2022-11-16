@@ -22,7 +22,7 @@
     width: 100%;
     max-width: 540px;
     height: 500px;
-    background: linear-gradient(to right, #4c658a, #abf5c1);
+    background: rgb(180, 207, 221);
     border-radius: 10px;
 }
 
@@ -53,6 +53,9 @@
 .popup-img{
     width: 150px;
     border-radius: 10px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: white;
 }
 
 .popup-span{

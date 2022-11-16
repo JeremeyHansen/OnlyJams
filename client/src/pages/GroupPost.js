@@ -15,22 +15,10 @@ export default function GroupPost({ group, post, user, setAllPosts }) {
     setAllPosts((posts) => posts.filter((post) => post.id !== id));
   };
 
-  //   const handleEdit = (id) => {
-  //     const fixedPost = {
-  //       post_id: post.id,
-  //       post: {newPost},
-  //       saves: post.saves,
-  //       likes: post.likes,
-  //       created_at: post.created_at,
-  //       group: post.group,
-  //       user: post.user
-  //     }
-  //     fetch(`/posts/${id}`, {
-  //       method: 'PATCH',
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(fixedPost),
-  //     })
-  // }
+  function closeEditPost(e){
+    console.log(e)
+  }
+
 
   return (
     <>
@@ -64,7 +52,7 @@ export default function GroupPost({ group, post, user, setAllPosts }) {
           ) : (
             ""
           )}
-          {handleOpen&&<EditPost post={post} setHandleOpen={setHandleOpen}/>}
+          {handleOpen&&<EditPost post={post} closeEditPost={closeEditPost} setHandleOpen={setHandleOpen}/>}
           {user?.id === post?.user.id ? (
             <button className="like-btns" onClick={() => handleDelete(post.id)}>
               <ImBin />

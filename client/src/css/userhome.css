@@ -4,7 +4,7 @@
   background: rgb(209, 240, 255);
   margin-left: 25%;
   margin-right: 25%;
-  height: 96.5vh;
+  height: 86vh;
   border-radius: 15px;
   overflow: scroll;
   border-style: solid;
@@ -15,7 +15,8 @@
 .form-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  margin-left: 16%;
 }
 
 .post-img {
@@ -50,13 +51,14 @@
   position: absolute;
   top: 18.7%;
   background: rgba(209, 237, 231, 0.795);
-  /* border-radius: 10px; */
+  border-radius: 40px 0px 0px 10px;
   margin-left: 35px;
-  height: 85vh;
+  height: 80vh;
   width: 20%;
-  overflow: scroll;
+  /* overflow: scroll; */
   border-style: solid;
   border-width: 5px;
+  z-index: 0;
 }
 
 .group-container {
@@ -65,11 +67,11 @@
   position: absolute;
   top: 18.4%;
   background: rgba(209, 237, 231, 0.795);
-  /* border-radius: 10px; */
+  border-radius: 0px 40px 10px 0px;
   margin-left: 76.5%;
-  height: 100vh;
+  height: 80vh;
   width: 20%;
-  overflow: scroll;
+  /* overflow: scroll; */
   border-style: solid;
   border-width: 5px;
 }
@@ -79,13 +81,19 @@
 
 .friend-list{
   margin-top: 20px;
+  overflow: scroll;
+  height: 65vh;
 }
 .post-list{
-  margin-top: 45px;
+  margin-top: 10px;
+  overflow: scroll;
+  height: 65vh;
 }
 
 .all-groups{
   margin-top: 20px;
+  overflow: scroll;
+  height: 65vh;
 }
 
 .submit-btn{
@@ -99,4 +107,5 @@
   border-style: solid;
   border-width: 3px;
   font-family: inherit;
+  margin-bottom: 10px;
 }

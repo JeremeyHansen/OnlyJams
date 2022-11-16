@@ -21,9 +21,15 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = User.find(params[:user_id])
+        user = User.find(session[:user_id])
         if user 
             user.update(user_params)
+            render json: user, status: 200
+        end
+
+        dbUser = User.find(params[:user_id])
+        if dbUser
+            user.update(user_parmas)
             render json: user, status: 200
         end
     end
