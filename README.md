@@ -1,5 +1,11 @@
 # OnlyJames
 
+## Table of contents
+* [Authors](#authors)
+* [Technologies](#technologies)
+* [Key Features](#key-features)
+* [Setup](#launch)
+
 ## Authors
 
 [@JeremeyHansen](https://github.com/JeremeyHansen)
@@ -19,7 +25,14 @@ As a musician, I've realized the social media realm lacks a platform for users t
 - CSS
 
 ## Key Features
-* Dynamic Filter Animations
-* Full screen mode
+* Messenger
+* Friend Searcher
+* User Post, Like, Save Abilities
 * Cross platform
   - Windows, macOS and Linux ready.
+* Dynamic Display
+* User Authentication, Authorization
+* Complex Api Structure 
+
+# Launch
+
