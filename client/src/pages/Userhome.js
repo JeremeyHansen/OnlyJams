@@ -4,9 +4,8 @@ import Friend from "./Friend.js";
 import Group from "./Group.js";
 import Post from "./Post.js";
 
-export default function Userhome({ user }) {
+export default function Userhome({ user, newFriend }) {
   const [post, setPost] = useState("");
-  // const [allPosts, setAllPosts] = useState(user?.posts);
   const [groups, setGroups] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [friendSearchTerm, setFriendSearchTerm] = useState("");
@@ -28,15 +27,16 @@ export default function Userhome({ user }) {
   function handleChange(event) {
     setSearchTerm(event.target.value);
   }
+  console.log(newFriend)
+  const allFriends = user ? user.friends : [];
+  newFriend&&(allFriends.push(newFriend))
 
   //search for the friends
-
-  const friendsToDisplay = user?.friends.filter((friend) =>
+  const friendsToDisplay = allFriends.filter((friend) =>
     (friend.first_name + friend.last_name)
       .toLowerCase()
       .includes(friendSearchTerm.toLowerCase())
   );
-  
   function handleFriendSearch(event) {
     setFriendSearchTerm(event.target.value);
   }

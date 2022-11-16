@@ -35,6 +35,7 @@
     border-color: white;
     margin-left: 15px;
     margin-top: 18px;
+    transition: linear .3s;
 }
 
 .chat-btn:hover{

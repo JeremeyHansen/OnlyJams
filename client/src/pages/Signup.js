@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/signup.css";
 
-export default function Signup() {
+export default function Signup({allUsers, setAllUsers}) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
@@ -37,7 +37,8 @@ export default function Signup() {
       .then((res) => res.json())
       .then(() => {
         navigate("/login");
-      });
+      })
+      .then(()=> setAllUsers([...allUsers, user]))
   }
 
   return (

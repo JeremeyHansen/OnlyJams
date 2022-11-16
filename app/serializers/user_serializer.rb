@@ -3,4 +3,5 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :friends
   has_many :groups
+  has_many :matches
 end

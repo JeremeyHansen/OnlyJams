@@ -3,74 +3,64 @@ import { useNavigate } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import { useState, useEffect } from "react";
 import UserProfile from "./pages/UserProfile.js";
-import User from './pages/User.js'
+import User from "./pages/User.js";
 import { BsFillHouseDoorFill } from "react-icons/bs";
-import { Messages } from './pages/Messages.js';
+import { Messages } from "./pages/Messages.js";
 
-
-
-export default function Navbar({ user, onLogout, setUser }) {
-  const [allUsers, setAllUsers] = useState([]);
+export default function Navbar({ user, onLogout, setUser, setNewFriend, allUsers, setAllUsers }) {
   const [userSearchTerm, setUserSearchTerm] = useState("");
   const [userSearchOpen, setUserSearchOpen] = useState(false);
 
   const navigate = useNavigate();
-  //snag all users
-  useEffect(() => {
-    // auto-login
-    fetch("/users")
-    .then((res) => res.json())
-    .then((data) => setAllUsers(data));
-  }, []);
-  
+
   //search users
   const usersToDisplay = allUsers?.filter((user) =>
-  (user.first_name + user.last_name)
-  .toLowerCase()
-  .includes(userSearchTerm.toLowerCase())
+    (user.first_name + user.last_name)
+      .toLowerCase()
+      .includes(userSearchTerm.toLowerCase())
   );
   function handleUserSearch(event) {
     setUserSearchTerm(event.target.value);
   }
-  
+
   const handleOpenUserSearch = () => {
-    setUserSearchOpen(true)
-  }
+    setUserSearchOpen(true);
+  };
   const handleCloseUserSearch = () => {
-    setUserSearchOpen(false)
-  }
-  
+    setUserSearchOpen(false);
+  };
+
   //log user out
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE",
     })
-    .then(() => onLogout())
-    .then(() => {
-      navigate("/");
-    })
-    .then(setOpen(!open));
+      .then(() => onLogout())
+      .then(() => {
+        navigate("/");
+      })
+      .then(setOpen(!open));
   }
-  
+
   //set the drop down menu to open
   const [open, setOpen] = useState(false);
-  
+
   const handleOpen = () => {
     setOpen(!open);
   };
 
   //open user profile
-  
+
   const [openProfile, setOpenProfile] = useState(false);
-  
+
   const handleOpenProfile = () => {
-    setOpenProfile(true)
+    setOpenProfile(true);
   };
-  
+
   const handleUserClose = () => {
     setOpenProfile(false);
   };
-  
+
   return (
     <nav className="nav">
       <Link to="/" className="site-title">
@@ -79,8 +69,8 @@ export default function Navbar({ user, onLogout, setUser }) {
       </Link>
       {user && (
         <ul>
-          <Link to="/userhome">          
-          <BsFillHouseDoorFill className="home"/>
+          <Link to="/userhome" >
+            <BsFillHouseDoorFill className="home" />
           </Link>
           <input
             className="friend-searcher"
@@ -89,12 +79,19 @@ export default function Navbar({ user, onLogout, setUser }) {
             onChange={handleUserSearch}
             onClick={handleOpenUserSearch}
           ></input>
-          {userSearchOpen&&<div className="all-users-list">
-          {userSearchOpen&& usersToDisplay.map((singleUser) => {
-              return <User key={singleUser.id} singleUser={singleUser}/>
-            })}
-           {userSearchOpen&&<button onClick={handleCloseUserSearch}>X</button>} 
-          </div>}
+          {userSearchOpen && (
+            <div className="all-users-list">
+              {userSearchOpen &&
+                usersToDisplay
+                  .sort((a, b) => a.first_name.localeCompare(b.first_name))
+                  .map((singleUser) => {
+                    return <User setNewFriend={setNewFriend} key={singleUser.id} singleUser={singleUser} user={user}/>;
+                  })}
+              {userSearchOpen && (
+                <button className="close-friend-list"onClick={handleCloseUserSearch}>X</button>
+              )}
+            </div>
+          )}
         </ul>
       )}
       <ul>
@@ -122,17 +119,18 @@ export default function Navbar({ user, onLogout, setUser }) {
                       setUser={setUser}
                     />
                   )}
-                  <Link to="/messages"> 
-                  <button className="profile-btn" onClick={() => setOpen(false)}>
-                    Messages
-                  </button>
+                  <Link to="/messages">
+                    <button
+                      className="profile-btn"
+                      onClick={() => setOpen(false)}
+                    >
+                      Messages
+                    </button>
                   </Link>
                   <Link to="/savedpostspage">
-                  <button className="profile-btn">
-                    Saved Posts
-                  </button>
+                    <button className="profile-btn">Saved Posts</button>
                   </Link>
-                  <button className="logout" onClick={handleLogout}>
+                  <button className="profile-btn" onClick={handleLogout}>
                     Log Out
                   </button>
                 </div>

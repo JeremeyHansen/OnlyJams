@@ -11,9 +11,8 @@ import SavedPostsPage from "./pages/SavedPostsPage"
 
 function App() {
   const [ user, setUser ] = useState(null);
-  const [ userFriends, setUserFriends ] = useState([])
-
-
+  
+  
   
   useEffect(() => {
     fetch("/me")
@@ -22,39 +21,37 @@ function App() {
         res.json()
         .then((user) => {
           setUser(user)})
-      }
-  });
-}, []);
-
-useEffect(() => {
-  fetch(`/users/2/friends`)
-  .then((res) => {
-    if (res.ok) {
-      res.json()
-      .then((data) => {
-        setUserFriends(data);
+        }
       });
+    }, []);
+    
+    
+    function handleLogin(user) {
+      setUser(user);
     }
-});
-}, []);
+    
+    function handleLogout(user) {
+      setUser(null);
+    }
+    
+    const [ newFriend, setNewFriend ] = useState(null);
+    const [allUsers, setAllUsers] = useState([]);
 
-function handleLogin(user) {
-  setUser(user);
-}
+    useEffect(() => {
+      fetch("/users")
+        .then((res) => res.json())
+        .then((data) => setAllUsers(data));
+    }, []);
 
-function handleLogout(user) {
-  setUser(null);
-}
-
-  return (
+    return (
     <>
-    <Navbar user={user} onLogout={handleLogout} setUser={setUser}/>
+    <Navbar user={user} onLogout={handleLogout} setNewFriend={setNewFriend} allUsers={allUsers} setAllUsers={setAllUsers} setUser={setUser}/>
     <div className="component-container">
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login onLogin={handleLogin} />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/userhome" element={<Userhome user={user} />} />
+      <Route path="/signup" element={<Signup allUsers={allUsers} setAllUsers={setAllUsers}/>} />
+      <Route path="/userhome" element={<Userhome user={user} newFriend={newFriend}/>} />
       <Route path="/messages" element={<Messages user={user}/>} />
       <Route path="/savedpostspage" element={<SavedPostsPage user={user} />} />
     </Routes>

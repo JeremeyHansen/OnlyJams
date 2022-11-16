@@ -12,13 +12,7 @@ export default function Post({ post, friend }) {
     e.preventDefault()
     const fixedLikes = post.likes + 1
     const fixedPost = {
-      id: post.id,
-      post: post,
-      saves: post.saves,
       likes: fixedLikes,
-      created_at: post.created_at,
-      group: post.group,
-      user: post.user
     }
     fetch(`/posts/${post.id}`, {
       method: "PATCH",

@@ -108,26 +108,27 @@ body {
 }
 
 .profile-btn{
-      color: white;
+      color: rgb(62, 66, 143);
     border: none;
     width: 175px; 
-    background-color: #4c658a;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    background-color: white;
+    font-family: inherit;
+    font-weight: bold;
+    padding: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-style: solid;
     border-width: 2.5px;
     border-radius: 5px;
-    border-color: white;
+    border-color: rgb(62, 66, 143);
     transition: linear 0.3s;
 }
 
 .profile-btn:hover {
-  background-color: white;
-  color: #3f3e7e;
-  box-shadow: 0 0 10px white;
+  color: rgb(104, 104, 186);
+  background-color: #abf5c1;
   cursor: pointer;
+  border-color: white;
 }
 
 .nav-profile-pic {
@@ -209,12 +210,16 @@ body {
 
 .all-users-list img{
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
+  border-style: solid;
+  border-color: white;
+  border-width: 2px;
+  width: 35px;
+  height: 35px;
   margin-right: 20px;
+  margin-top: 9px;
 }
 
-.all-users-list button{
+.close-friend-list{
   position: absolute;
   top: 0;
   right: 0;
@@ -228,19 +233,43 @@ body {
   background: rgb(148, 198, 205);
   font-weight: bold;
   color: white;
+  transition: linear .3s;
 }
 
-.all-users-list button:hover{
+.close-friend-list:hover{
   color: #177e89;
   background: white;
   border-color: #177e89;
 }
 
 .all-users-list li {
-  cursor: pointer;
   padding: 10px;
 }
 
 .home{
   margin-top: 7px;
+}
+
+.drop-down-users{
+  display: flex;
+}
+
+.add-friend-btn{
+  border-style: none;
+  border-radius: 5px;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-left: 25px;
+  margin-top: 5px;
+  padding: 5px;
+  height: 42px;
+  background-color: inherit;
+  color: rgb(61, 100, 171);
+  transition: linear .3s;
+}
+
+.add-friend-btn:hover{
+  color: white;
+  background-color: rgb(61, 100, 171);
+  cursor: pointer;
 }

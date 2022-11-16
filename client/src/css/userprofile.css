@@ -49,11 +49,12 @@
     margin-left: 15%;
     margin-right: 15%;
     background-color: rgb(177, 207, 238);
-    margin-top: 25px;
+    margin-top: 45px;
+    padding: 35px;
 }
 
 .user-contents h3{
- margin-left: 33%;
+ margin-left: 15%;
 }
 
 .edit-profile-btn{
@@ -68,6 +69,7 @@
     width: 120px;
     margin-left: 40%;
     margin-bottom: 20px;
+    margin-top: 55px;
     transition: linear 0.3s;
 }
 

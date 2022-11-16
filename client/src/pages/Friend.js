@@ -5,15 +5,16 @@ import FriendPopup from './FriendPopup.js'
 export default function Friend({ friend }){
     const [ buttonPopup, setButtonPopup ] = useState(false)
 
-//     const handleDelete = (id) => {
-//         // fetch(`/matches/${id}`, {
-//         //   method: 'DELETE',
-//         // })
-//         //   .then((res) => console.log(res))
-//         console.log(id)
-//       }
-// console.log(friend)
-    return (
+    const handleDelete = (e) => {
+        e.preventDefault(e)
+        fetch(`/matches/${friend?.id}`, {
+          method: 'DELETE',
+        })
+          .then((res) => console.log(res))
+          .then(() => setButtonPopup(false))
+      }
+
+      return (
         <>
         <div className="friend-card">
             <img className="friend-pic" alt={friend?.first_name} src={friend?.profile_picture} onClick={() => setButtonPopup(true)}></img>
@@ -24,7 +25,7 @@ export default function Friend({ friend }){
                 <p><span className="popup-span">Phone Number: </span>{friend?.phone_number}</p>
                 <p><span className="popup-span">Email: </span>{friend?.email}</p>
                 <p><span className="popup-span">Birthday: </span>{friend?.birthday}</p>
-                {/* <button onClick={handleDelete}>Remove Friend</button> */}
+                <button onClick={handleDelete}>Remove Friend</button>
             </FriendPopup>
         </div>
         </>
