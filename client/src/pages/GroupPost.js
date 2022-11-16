@@ -69,7 +69,7 @@ export default function GroupPost({ group, post, user, setAllPosts }) {
           ) : (
             ""
           )}
-          {handleOpen&&<EditPost post={post} setPostText={setPostText} closeEditPost={closeEditPost} setHandleOpen={setHandleOpen}/>}
+          {handleOpen&&<EditPost key={post.id} post={post} setPostText={setPostText} closeEditPost={closeEditPost} setHandleOpen={setHandleOpen}/>}
           {user?.id === post?.user.id ? (
             <button className="like-btns" onClick={() => handleDelete(post.id)}>
               <ImBin />
