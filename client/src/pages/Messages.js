@@ -44,7 +44,7 @@ export default function Messages({ user }) {
                           user={user}
                         />
                       );
-                    }).reverse()}
+                    })}
                   </div>
                 </div>
               </div>

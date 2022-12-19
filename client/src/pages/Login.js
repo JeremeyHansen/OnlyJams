@@ -6,6 +6,7 @@ export default function Login({ onLogin }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useState("")
 
   function onSubmit(e) {
     e.preventDefault()
@@ -21,10 +22,11 @@ export default function Login({ onLogin }) {
       .then((res) => {
         if (res.ok) {
           res.json().then((user) => onLogin(user))
+          navigate('/userhome')
         }
-      })
-      .then(() => {
-        navigate('/userhome')
+        else {
+          setErrorMessage("Incorrect username or password")
+        }
       })
   }
   return (
@@ -51,6 +53,7 @@ export default function Login({ onLogin }) {
           <button className="submit-button" type="submit">
             Log In
           </button>
+          <p>{errorMessage}</p>
         </form>
       </div>
     </>
